@@ -54,14 +54,10 @@ public class Rook
     @Override
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/WhiteRook.gif")
-            );            
+            return createWhiteRook();            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackRook.gif")
-            );            
+            return createBlackRook();           
         }
         else
         {
@@ -70,4 +66,19 @@ public class Rook
             );        
         }
     }
+    
+    
+    public ImageIcon createWhiteRook() {
+        return new ImageIcon(
+                getClass().getResource("chessImages/WhiteRook.gif")
+            );
+    }
+    
+    public ImageIcon createBlackRook() {
+        return new ImageIcon(
+                getClass().getResource("chessImages/BlackRook.gif")
+            );
+    }
+    
+    
 }
