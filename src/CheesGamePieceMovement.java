@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Saroff
  */
-public interface PieceMovement {
+public interface CheesGamePieceMovement {
     public boolean move( ChessGameBoard board, int row, int col );
     public ArrayList<String> calculatePossibleMoves( ChessGameBoard board );
 }

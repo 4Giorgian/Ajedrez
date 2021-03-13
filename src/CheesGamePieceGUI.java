@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  *
  * @author Saroff
  */
-public interface PiecePrint {
+public interface CheesGamePieceGUI {
     
     public ImageIcon createImageByPieceType();
     
