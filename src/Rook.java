@@ -3,44 +3,12 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 // -------------------------------------------------------------------------
 
-public class Rook implements movimientos{
-    protected boolean             skipMoveGeneration;
-    protected int                 pieceColor;
-    protected ImageIcon           pieceImage;
-    
-    protected ArrayList<String> possibleMoves;
-    
-    protected int               pieceRow;
-   
-    protected int               pieceColumn;
-    
-    static final int            BLACK      = 0;
-    
-    static final int            WHITE      = 1;
-    
-    static final int            UNASSIGNED = -1;
- 
-    /*public Rook( ChessGameBoard board, int row, int col, int color ){
-        super( board, row, col, color );
-    }*/
+public class Rook implements ChessGamePieceMoves{
     
     
-    public boolean isOnScreen( int row, int col ){
-        if ( row >= 0 && row <= 7 && col >= 0 && col <= 7 ){
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
-    public boolean isPieceOnScreen(){
-        return isOnScreen( pieceRow, pieceColumn );
-    }
     
      //@Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
+    public ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
         ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
         ArrayList<String> westMoves = calculateWestMoves( board, 8 );
@@ -76,44 +44,6 @@ public class Rook implements movimientos{
         return moves;
     }
     
-    
-    public int getColorOfPiece(){
-        return pieceColor;
-    }
-    
-     public boolean isEnemy( ChessGameBoard board, int row, int col ){
-        if ( row > 7 || col > 7 || row < 0 || col < 0 ){
-            return false;
-        }
-        ChessGamePiece enemyPiece =
-            board.getCell( row, col ).getPieceOnSquare() == null
-                ? null
-                : board.getCell( row, col ).getPieceOnSquare();
-        if ( enemyPiece == null
-            || this.getColorOfPiece() == ChessGamePiece.UNASSIGNED
-            || enemyPiece.getColorOfPiece() == ChessGamePiece.UNASSIGNED ){
-            return false;
-        }
-        if ( this.getColorOfPiece() == ChessGamePiece.WHITE ){
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
     
     public ArrayList<String> calculateNorthMoves(
         ChessGameBoard board,
@@ -218,6 +148,8 @@ public class Rook implements movimientos{
                 getClass().getResource("chessImages/BlackRook.gif")
             );
     }
+
+   
 
     
 
