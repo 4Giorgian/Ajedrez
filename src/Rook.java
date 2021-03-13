@@ -1,14 +1,40 @@
-import java.awt.Color;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import java.util.ArrayList;
 // -------------------------------------------------------------------------
-
-public class Rook implements ChessGamePieceMoves{
-    
-    
-    
-     //@Override
-    public ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
+/**
+ * Represents a Rook game piece.
+ *
+ * @author Ben Katz (bakatz)
+ * @author Myles David II (davidmm2)
+ * @author Danielle Bushrow (dbushrow)
+ * @version 2010.11.17
+ */
+public class Rook
+    extends ChessGamePiece{
+    // private ArrayList<String> possibleMoves;
+    // ----------------------------------------------------------
+    /**
+     * Create a new Rook object.
+     *
+     * @param board
+     *            the board to create the rook on
+     * @param row
+     *            the row to create the rook on
+     * @param col
+     *            the column to create the rook on
+     * @param color
+     *            either GamePiece.WHITE, BLACK, or UNASSIGNED
+     */
+    public Rook( ChessGameBoard board, int row, int col, int color ){
+        super( board, row, col, color );
+    }
+    /**
+     * Calculates the possible moves for this Rook.
+     * @param board the board to check on
+     * @return ArrayList<String> the list of moves
+     */
+    @Override
+    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
         ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
         ArrayList<String> westMoves = calculateWestMoves( board, 8 );
@@ -20,103 +46,11 @@ public class Rook implements ChessGamePieceMoves{
         allMoves.addAll( eastMoves );
         return allMoves;
     }
-    
-    public ArrayList<String> calculateSouthMoves(ChessGameBoard board,int numMoves ){
-        
-        ArrayList<String> moves = new ArrayList<String>();
-        int count = 0;
-        if ( isPieceOnScreen() ){
-            for ( int i = pieceRow + 1; i < 8 && count < numMoves; i++ ){
-                if ( ( board.getCell( i, pieceColumn ).getPieceOnSquare()
-                    == null || isEnemy( board, i, pieceColumn ) ) ){
-                    moves.add( i + "," + pieceColumn );
-                    count++;
-                    if ( isEnemy( board, i, pieceColumn ) ){
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-        return moves;
-    }
-    
-    
-    public ArrayList<String> calculateNorthMoves(
-        ChessGameBoard board,
-        int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
-        int count = 0;
-        if ( isPieceOnScreen() ){
-            for ( int i = pieceRow - 1; i >= 0 && count < numMoves; i-- ){
-                if ( ( board.getCell( i, pieceColumn ).getPieceOnSquare()
-                    == null || isEnemy( board, i, pieceColumn ) ) ){
-                    moves.add( i + "," + pieceColumn );
-                    count++;
-                    if ( isEnemy( board, i, pieceColumn ) ){
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-        return moves;
-    }
-    
-    public ArrayList<String> calculateEastMoves(
-        ChessGameBoard board,
-        int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
-        int count = 0;
-        if ( isPieceOnScreen() ){
-            for ( int i = pieceColumn + 1; i < 8 && count < numMoves; i++ ){
-                if ( ( board.getCell( pieceRow, i ).getPieceOnSquare()
-                    == null || isEnemy( board, pieceRow, i ) ) ){
-                    moves.add( pieceRow + "," + i );
-                    count++;
-                    if ( isEnemy( board, pieceRow, i ) ){
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-        return moves;
-    }
-    
-    public ArrayList<String> calculateWestMoves(
-        ChessGameBoard board,
-        int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
-        int count = 0;
-        if ( isPieceOnScreen() ){
-            for ( int i = pieceColumn - 1; i >= 0 && count < numMoves; i-- ){
-                if ( ( board.getCell(pieceRow, i ).getPieceOnSquare()
-                    == null || isEnemy( board, pieceRow, i ) ) ){
-                    moves.add( pieceRow + "," + i );
-                    count++;
-                    if ( isEnemy( board, pieceRow, i ) ){
-                        break;
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-        return moves;
-    }
-    
+    /**
+     * Creates an icon for this piece depending on the piece's color.
+     *
+     * @return ImageIcon the ImageIcon representation of this piece.
+     */
      
    
     
