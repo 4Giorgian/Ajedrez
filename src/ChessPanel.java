@@ -11,6 +11,7 @@ import javax.swing.*;
  */
 public class ChessPanel
     extends JPanel{
+    private static ChessPanel ChessPanelInstance;
     private ChessMenuBar    menuBar;
     private ChessGameBoard  gameBoard;
     private ChessGameLog    gameLog;
@@ -21,7 +22,7 @@ public class ChessPanel
     /**
      * Create a new ChessPanel object.
      */
-    public ChessPanel(){
+    private ChessPanel(){
         this.setLayout( new BorderLayout() );
         menuBar = new ChessMenuBar();
         gameBoard = new ChessGameBoard();
@@ -35,6 +36,14 @@ public class ChessPanel
         this.add( playerTwoGraveyard, BorderLayout.EAST );
         this.setPreferredSize( new Dimension( 800, 600 ) );
         gameEngine = new ChessGameEngine( gameBoard ); // start the game
+    }
+
+    public static ChessPanel getChessPanelInstace() {
+        if ( ChessPanelInstance == null ) {
+            ChessPanelInstance = new ChessPanel();
+            return ChessPanelInstance;
+        }
+        return ChessPanelInstance;
     }
     // ----------------------------------------------------------
     /**
