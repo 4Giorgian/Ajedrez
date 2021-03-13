@@ -10,18 +10,23 @@ import javax.swing.*;
  * @version 2010.11.17
  */
 public class ChessPanel
+        
     extends JPanel{
+    private static ChessPanel iChessPanel;
     private ChessMenuBar    menuBar;
     private ChessGameBoard  gameBoard;
     private ChessGameLog    gameLog;
     private ChessGraveyard  playerOneGraveyard;
     private ChessGraveyard  playerTwoGraveyard;
     private ChessGameEngine gameEngine;
+    
     // ----------------------------------------------------------
     /**
      * Create a new ChessPanel object.
      */
-    public ChessPanel(){
+            
+    private ChessPanel(){
+                      
         this.setLayout( new BorderLayout() );
         menuBar = new ChessMenuBar();
         gameBoard = new ChessGameBoard();
@@ -42,6 +47,15 @@ public class ChessPanel
      * 
      * @return ChessGameLog the ChessGameLog object
      */
+    public static ChessPanel getChessPanel () {
+        if (iChessPanel == null ){
+            iChessPanel = new ChessPanel();
+        }
+        return iChessPanel;
+        
+    }
+    
+    
     public ChessGameLog getGameLog(){
         return gameLog;
     }
