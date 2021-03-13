@@ -22,5 +22,6 @@ public class ChessMain{
         frame.getContentPane().add( new ChessPanel() );
         frame.pack();
         frame.setVisible( true );
+        System.out.println("Hola");
     }
 }
