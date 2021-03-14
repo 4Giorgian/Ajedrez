@@ -86,4 +86,16 @@ public class Queen extends ChessGamePiece implements QueenInterface {
                 getClass().getResource("chessImages/BlackQueen.gif")
             );
     }
+
+    @Override
+    public QueenInterface clonar() {
+        // TODO Auto-generated method stub
+        Queen queenClonada = null;
+        try {
+            queenClonada = (Queen) clone(); 
+        }catch(CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return queenClonada;
+    }
 }

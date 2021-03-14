@@ -11,9 +11,10 @@ import javax.swing.ImageIcon;
  *
  * @author gianmarco
  */
-public interface QueenInterface {
+public interface QueenInterface  extends Cloneable {
   
     public ImageIcon createWhiteQueen();
     public ImageIcon createBlackQueen();
+    QueenInterface clonar();
   
 }
