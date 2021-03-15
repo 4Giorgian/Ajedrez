@@ -3,7 +3,7 @@ import javax.swing.*;
 public class ChessMain{
     // ----------------------------------------------------------
     
-    //new ChessPanel()
+    
             
     public static void main( String[] args ){
         

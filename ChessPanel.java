@@ -1,14 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 // -------------------------------------------------------------------------
-/**
- * The main panel of the Chess game.
- * 
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
- */
+
 public class ChessPanel
     extends JPanel{
     
@@ -48,40 +41,22 @@ public class ChessPanel
         
     }
     // ----------------------------------------------------------
-    /**
-     * Gets the logger object for use in other classes.
-     * 
-     * @return ChessGameLog the ChessGameLog object
-     */
+    
     public ChessGameLog getGameLog(){
         return gameLog;
     }
     // ----------------------------------------------------------
-    /**
-     * Gets the board object for use in other classes.
-     * 
-     * @return ChessGameBoard the ChessGameBoard object
-     */
+    
     public ChessGameBoard getGameBoard(){
         return gameBoard;
     }
     // ----------------------------------------------------------
-    /**
-     * Gets the game engine object for use in other classes
-     * 
-     * @return ChessGameEngine the ChessGameEngine object
-     */
+    
     public ChessGameEngine getGameEngine(){
         return gameEngine;
     }
     // ----------------------------------------------------------
-    /**
-     * Gets the appropriate graveyard object for use in other classes.
-     * 
-     * @param whichPlayer
-     *            the number of the player (1 or 2)
-     * @return ChessGraveyard the graveyard requested
-     */
+    
     public ChessGraveyard getGraveyard( int whichPlayer ){
         if ( whichPlayer == 1 ){
             return playerOneGraveyard;
