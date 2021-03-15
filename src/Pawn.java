@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Pawn 
     extends ChessGamePiece
-    implements CheesGamePieceGUI, CheesGamePieceMovement {
+    implements CheesGamePieceGUI, CheesGamePieceMovement, IPawn {
     private boolean notMoved;
     static final String PATH_IMAGE_WHITE = "chessImages/WhitePawn.gif";
     static final String PATH_IMAGE_BLACK = "chessImages/BlackPawn.gif";
@@ -145,5 +145,19 @@ public class Pawn
                 getClass().getResource(PATH_IMAGE_UNASSIGNED)
             );           
         }
+    }
+
+    @Override
+    public IPawn clone() {
+        Pawn pawn = null;
+        try {
+            pawn = (Pawn) clone();
+            if(pawn == null) {
+                throw new CloneNotSupportedException();
+            }
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return pawn;
     }
 }
