@@ -1,13 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author niquito
  */
-public class IRook {
-    
+import javax.swing.ImageIcon;
+
+
+public interface IRook  extends Cloneable {
+  
+    public ImageIcon createWhiteRook();
+    public ImageIcon createBlackRook();
+    IRook clonar();
+  
 }
