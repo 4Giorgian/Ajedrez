@@ -3,8 +3,6 @@ import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
  * Represents a Knight game piece.
- *HOLAAAAA
- * holaaaa
  * @author Ben Katz (bakatz)
  * @author Myles David II (davidmm2)
  * @author Danielle Bushrow (dbushrow)
