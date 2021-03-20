@@ -160,13 +160,18 @@ public class ChessGameBoard extends JPanel{
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
                 ChessGamePiece pieceToAdd;
+                Pawn p1 = new Pawn(this, i, j, ChessGamePiece.BLACK);
+                Pawn p2 = new Pawn(this, i, j, ChessGamePiece.WHITE);
+
                 if ( i == 1 ) // black pawns
                 {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
+                    //pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
+                    pieceToAdd = (Pawn) p1.clone(this);
                 }
                 else if ( i == 6 ) // white pawns
                 {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
+                    //pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
+                    pieceToAdd = (Pawn) p2.clone(this);
                 }
                 else if ( i == 0 || i == 7 ) // main rows
                 {

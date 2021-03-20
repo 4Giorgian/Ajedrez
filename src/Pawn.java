@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Pawn 
     extends ChessGamePiece
     implements CheesGamePieceGUI, CheesGamePieceMovement, IPawn {
+    
     private boolean notMoved;
     static final String PATH_IMAGE_WHITE = "chessImages/WhitePawn.gif";
     static final String PATH_IMAGE_BLACK = "chessImages/BlackPawn.gif";
@@ -148,16 +149,17 @@ public class Pawn
     }
 
     @Override
-    public IPawn clone() {
-        Pawn pawn = null;
-        try {
-            pawn = (Pawn) clone();
-            if(pawn == null) {
-                throw new CloneNotSupportedException();
-            }
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return pawn;
+    public IPawn clone(ChessGameBoard board) {
+//        Pawn pawn = null;
+//        try {
+//            pawn = (Pawn) clone();
+//            if(pawn == null) {
+//                throw new CloneNotSupportedException();
+//            }
+//        } catch (CloneNotSupportedException e) {
+//            e.printStackTrace();
+//        }
+//        return pawn;
+        return new Pawn(board, this.pieceRow, this.pieceColumn, this.getColorOfPiece());
     }
 }

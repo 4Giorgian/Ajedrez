@@ -9,5 +9,5 @@
  * @author Saroff
  */
 public interface IPawn extends Cloneable {
-    public IPawn clone();
+    public IPawn clone(ChessGameBoard board);
 }
