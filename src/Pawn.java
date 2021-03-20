@@ -32,10 +32,18 @@ public class Pawn
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Pawn( ChessGameBoard board, int row, int col, int color ){
+    private Pawn( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, true );
         notMoved = true;
         possibleMoves = calculatePossibleMoves( board );
+    }
+    
+    public static Object getPawn( ChessGameBoard board, int row, int col, int color ){
+        
+        if(board == null){
+            return new NullObjectPiece();
+        }
+        return new Pawn( board, row, col, color );
     }
     /**
      * Moves this pawn to a row and col

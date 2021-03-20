@@ -162,11 +162,11 @@ public class ChessGameBoard extends JPanel{
                 ChessGamePiece pieceToAdd;
                 if ( i == 1 ) // black pawns
                 {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
+                    pieceToAdd = (ChessGamePiece) Pawn.getPawn( this, i, j, ChessGamePiece.BLACK );
                 }
                 else if ( i == 6 ) // white pawns
                 {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
+                    pieceToAdd = (ChessGamePiece) Pawn.getPawn( this, i, j, ChessGamePiece.WHITE );
                 }
                 else if ( i == 0 || i == 7 ) // main rows
                 {
