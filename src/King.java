@@ -10,7 +10,8 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class King
-    extends ChessGamePiece{
+    extends ChessGamePiece
+        implements PiecePrint, PieceMovement{
     // ----------------------------------------------------------
     /**
      * Create a new King object.
@@ -24,6 +25,13 @@ public class King
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
+    
+    static final String PATH_IMAGE_WHITE = "chessImages/WhitePawn.gif";
+    static final String PATH_IMAGE_BLACK = "chessImages/BlackPawn.gif";
+    static final String PATH_IMAGE_UNASSIGNED = "chessImages/default-Unassigned.gif";
+    
+    
+    
     public King( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, false );
     }
@@ -36,7 +44,7 @@ public class King
      * @return ArrayList<String> the moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
+    public ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 1 );
         ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 1 );
         ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 1 );
@@ -75,18 +83,18 @@ public class King
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("chessImages/WhiteKing.gif")
+                getClass().getResource(PATH_IMAGE_WHITE)
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("chessImages/BlackKing.gif" )
+                getClass().getResource(PATH_IMAGE_BLACK )
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif" )
+                getClass().getResource(PATH_IMAGE_UNASSIGNED)
             );            
         }
     }
