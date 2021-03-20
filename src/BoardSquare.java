@@ -16,6 +16,10 @@ public class BoardSquare
     private ChessGamePiece piece;
     private JLabel         imageLabel;
     // ----------------------------------------------------------
+    
+    public BoardSquare(){
+      
+    }
     /**
      * Create a new BoardSquare object.
      *

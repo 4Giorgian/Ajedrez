@@ -11,8 +11,10 @@ import javax.swing.*;
  */
 public class ChessPanel
     extends JPanel{
+    
     private ChessMenuBar    menuBar;
     private ChessGameBoard  gameBoard;
+    //private ChessGameBoardAbstract  gameBoard;
     private ChessGameLog    gameLog;
     private ChessGraveyard  playerOneGraveyard;
     private ChessGraveyard  playerTwoGraveyard;
@@ -25,6 +27,7 @@ public class ChessPanel
         this.setLayout( new BorderLayout() );
         menuBar = new ChessMenuBar();
         gameBoard = new ChessGameBoard();
+        //gameBoard = new ChessGameBoardNull();
         gameLog = new ChessGameLog();
         playerOneGraveyard = new ChessGraveyard( "Player 1's graveyard" );
         playerTwoGraveyard = new ChessGraveyard( "Player 2's graveyard" );
