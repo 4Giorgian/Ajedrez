@@ -26,8 +26,8 @@ public class King
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
     
-    static final String PATH_IMAGE_WHITE = "chessImages/WhitePawn.gif";
-    static final String PATH_IMAGE_BLACK = "chessImages/BlackPawn.gif";
+    static final String PATH_IMAGE_WHITE = "chessImages/WhiteKing.gif";
+    static final String PATH_IMAGE_BLACK = "chessImages/BlackKing.gif";
     static final String PATH_IMAGE_UNASSIGNED = "chessImages/default-Unassigned.gif";
     
     

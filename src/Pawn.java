@@ -12,7 +12,9 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Pawn
-    extends ChessGamePiece{
+    extends ChessGamePiece
+implements IPeonPrototype
+{
     private boolean notMoved;
     // ----------------------------------------------------------
     /**
@@ -140,5 +142,11 @@ public class Pawn
                 getClass().getResource("chessImages/default-Unassigned.gif")
             );           
         }
+    }
+    
+    @Override
+    public IPeonPrototype clone (ChessGameBoard board){
+        
+        return new Pawn(board, this.pieceRow, this.pieceColumn, this.getColorOfPiece());
     }
 }
