@@ -12,7 +12,7 @@ import javax.swing.*;
 public class ChessPanel
         
     extends JPanel{
-    private static ChessPanel iChessPanel;
+    private static ChessPanel chessPanelInstance;;
     private ChessMenuBar    menuBar;
     private ChessGameBoard  gameBoard;
     private ChessGameLog    gameLog;
@@ -47,11 +47,11 @@ public class ChessPanel
      * 
      * @return ChessGameLog the ChessGameLog object
      */
-    public static ChessPanel getChessPanel () {
-        if (iChessPanel == null ){
-            iChessPanel = new ChessPanel();
+    public static ChessPanel getInstance () {
+        if (chessPanelInstance == null ){
+            chessPanelInstance = new ChessPanel();
         }
-        return iChessPanel;
+        return chessPanelInstance;
         
     }
     

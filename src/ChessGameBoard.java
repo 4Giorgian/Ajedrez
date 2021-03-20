@@ -8,7 +8,7 @@ import java.awt.GridLayout;
 /**
  * The panel that represents the Chess game board. Contains a few methods that
  * allow other classes to access the physical board.
- *sdf
+ *sdfsdfsd
  * @author Ben Katz (bakatz)
  * @author Myles David II (davidmm2)
  * @author Danielle Bushrow (dbushrow)
