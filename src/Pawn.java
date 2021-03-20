@@ -11,9 +11,14 @@ import java.util.ArrayList;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class Pawn
-    extends ChessGamePiece{
+public class Pawn 
+    extends ChessGamePiece
+    implements CheesGamePieceGUI, CheesGamePieceMovement, IPawn {
     private boolean notMoved;
+    static final String PATH_IMAGE_WHITE = "chessImages/WhitePawn.gif";
+    static final String PATH_IMAGE_BLACK = "chessImages/BlackPawn.gif";
+    static final String PATH_IMAGE_UNASSIGNED = "chessImages/default-Unassigned.gif";
+
     // ----------------------------------------------------------
     /**
      * Create a new Pawn object.
@@ -69,7 +74,7 @@ public class Pawn
      * @return ArrayList<String> the moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
+    public ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> moves = new ArrayList<String>();
         if ( isPieceOnScreen() ){
             int currRow =
@@ -126,19 +131,33 @@ public class Pawn
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("chessImages/WhitePawn.gif")
+                getClass().getResource(PATH_IMAGE_WHITE)
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("chessImages/BlackPawn.gif")
+                getClass().getResource(PATH_IMAGE_BLACK)
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif")
+                getClass().getResource(PATH_IMAGE_UNASSIGNED)
             );           
         }
+    }
+
+    @Override
+    public IPawn clone() {
+        Pawn pawn = null;
+        try {
+            pawn = (Pawn) clone();
+            if(pawn == null) {
+                throw new CloneNotSupportedException();
+            }
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return pawn;
     }
 }
