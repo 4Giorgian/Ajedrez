@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package com.pe.unmsm.factory;
+package pe.com.unmsm.factory;
 
 /**
  *
  * @author gperezr-e
  */
-public class Bishop extends Piece {
+public class Pawn extends Piece{
     
 }
