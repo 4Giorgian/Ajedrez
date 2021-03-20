@@ -31,5 +31,5 @@ public class NullPiece extends ChessGamePiece {
                 getClass().getResource("chessImages/notImage.gif")
             );
     }
-    
 }
+
