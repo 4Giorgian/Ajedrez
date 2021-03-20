@@ -35,7 +35,7 @@ public abstract class ChessGamePiece{
     /**
      * Represents a black piece as an int
      */
-    static final int            BLACK      = 0;
+    public static final int            BLACK      = 0;
     /**
      * Represents a white piece as an int
      */
