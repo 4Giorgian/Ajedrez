@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Pawn
-    extends ChessGamePiece{
+    extends ChessGamePiece implements IStandarPiece{
     private boolean notMoved;
     // ----------------------------------------------------------
     /**
@@ -140,5 +140,10 @@ public class Pawn
                 getClass().getResource("chessImages/default-Unassigned.gif")
             );           
         }
+    }
+    @Override
+    public ImageIcon addImage() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

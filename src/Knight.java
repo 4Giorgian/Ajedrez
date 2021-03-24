@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Knight
-    extends ChessGamePiece{
+    extends ChessGamePiece implements IStandarPiece{
     /**
      * Knight constructor for gamePiece
      *
@@ -113,5 +113,10 @@ public class Knight
                 getClass().getResource("chessImages/default-Unassigned.gif")
             );            
         }
+    }
+    @Override
+    public ImageIcon addImage() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

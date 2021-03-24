@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class King
-    extends ChessGamePiece{
+    extends ChessGamePiece implements IStandarPiece{
     // ----------------------------------------------------------
     /**
      * Create a new King object.
@@ -89,5 +89,10 @@ public class King
                 getClass().getResource("chessImages/default-Unassigned.gif" )
             );            
         }
+    }
+    @Override
+    public ImageIcon addImage() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
