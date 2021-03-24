@@ -1,6 +1,6 @@
 
 public class PieceStandarFactory {
-    public IStandarPiece CreateStandarPiece(String pieceName, ChessGameBoard board, int row, int col, int color) {
+    public ChessGamePiece CreateStandarPiece(String pieceName, ChessGameBoard board, int row, int col, int color) {
 
         if (pieceName.equalsIgnoreCase("PAWN")) {
 			return new Pawn(board, row, col, color);

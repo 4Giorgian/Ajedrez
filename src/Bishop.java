@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class Bishop extends ChessGamePiece implements IStandarPiece{
+public class Bishop extends ChessGamePiece {
     /**
      * Creates a new Bishop object.
      * 
@@ -68,10 +68,5 @@ public class Bishop extends ChessGamePiece implements IStandarPiece{
                 getClass().getResource("chessImages/BlackBishop.gif")
             );
         }
-    }
-    @Override
-    public ImageIcon addImage() {
-        // TODO Auto-generated method stub
-        return null;
     }
 }

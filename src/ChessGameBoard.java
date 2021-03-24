@@ -156,37 +156,40 @@ public class ChessGameBoard extends JPanel{
      * pieces added.
      */
     public void initializeBoard(){
+        PieceStandarFactory pieceStandar = new PieceStandarFactory();
         resetBoard( false );
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
                 ChessGamePiece pieceToAdd;
                 if ( i == 1 ) // black pawns
                 {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
+                    
+                    pieceToAdd = pieceStandar.CreateStandarPiece("PAWN", this, i, j, ChessGamePiece.BLACK);
                 }
                 else if ( i == 6 ) // white pawns
                 {
-                    pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
+
+                    pieceToAdd = pieceStandar.CreateStandarPiece("PAWN", this, i, j, ChessGamePiece.WHITE);
                 }
                 else if ( i == 0 || i == 7 ) // main rows
                 {
                     int colNum =
                         i == 0 ? ChessGamePiece.BLACK : ChessGamePiece.WHITE;
                     if ( j == 0 || j == 7 ){
-                        pieceToAdd = new Rook( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateStandarPiece("ROOK", this, i, j, colNum);
                     }
                     else if ( j == 1 || j == 6 ){
-                        pieceToAdd = new Knight( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateStandarPiece("KNIGHT", this, i, j, colNum);
                     }
                     else if ( j == 2 || j == 5 ){
-                        pieceToAdd = new Bishop( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateStandarPiece("BISHOP", this, i, j, colNum);
                     }
                     else if ( j == 3 ){
-                        pieceToAdd = new King( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateStandarPiece("KING", this, i, j, colNum);
                     }
                     else
                     {
-                        pieceToAdd = new Queen( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateStandarPiece("QUEEN", this, i, j, colNum);
                     }
                 }
                 else

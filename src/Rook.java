@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Rook
-    extends ChessGamePiece implements IStandarPiece{
+    extends ChessGamePiece {
     // private ArrayList<String> possibleMoves;
     // ----------------------------------------------------------
     /**
@@ -69,10 +69,5 @@ public class Rook
                 getClass().getResource("chessImages/default-Unassigned.gif")
             );        
         }
-    }
-    @Override
-    public ImageIcon addImage() {
-        // TODO Auto-generated method stub
-        return null;
     }
 }
