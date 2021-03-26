@@ -11,7 +11,12 @@ import javax.swing.*;
  */
 public class ChessPanel
     extends JPanel{
+    
+    //Declaramos el objeto chessPanelInstance de la clase ChessPanel, 
+    //con la palabra reservada static para acceder a sus metodos 
+    //estaticos sin pasar por una instancia
     private static ChessPanel chessPanelInstance;
+    
     private ChessMenuBar    menuBar;
     private ChessGameBoard  gameBoard;
     //private ChessGameBoardAbstract  gameBoard;
@@ -23,6 +28,9 @@ public class ChessPanel
     /**
      * Create a new ChessPanel object.
      */
+    
+    //Se cambia a privado al constructor ChessPanel, para evitar la creacion de otras intancias
+    //cumpliendo con el patron Singleton
     private ChessPanel(){
         this.setLayout( new BorderLayout() );
         menuBar = new ChessMenuBar();
@@ -87,10 +95,14 @@ public class ChessPanel
         }
     }
     
+    
+    //Se crea este metodo getInstance, de tipo estatico para que pueda ser accedido
     public static ChessPanel getInstance() {
+        //Comprobamos si existe no existen objetos
         if(chessPanelInstance == null) {
             chessPanelInstance = new ChessPanel();
         }
+        //Devolvemos la instancia
         return chessPanelInstance;
     }
 }

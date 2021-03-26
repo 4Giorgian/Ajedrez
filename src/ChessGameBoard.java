@@ -4,18 +4,13 @@ import java.awt.event.MouseListener;
 import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-// -------------------------------------------------------------------------
 /**
- * The panel that represents the Chess game board. Contains a few methods that
- * allow other classes to access the physical board.
- *
  * @author Ben Katz (bakatz)
  * @author Myles David II (davidmm2)
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
-    
+public class ChessGameBoard  extends JPanel{
     private BoardSquare[][] chessCells;
     private BoardListener   listener;
     // ----------------------------------------------------------
@@ -24,7 +19,6 @@ public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
      *
      * @return BoardSquare[][] the chess board
      */
-    @Override
     public BoardSquare[][] getCells(){
         return chessCells;
     }
@@ -34,7 +28,6 @@ public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
      * @param col the column to check
      * @return boolean true if they are valid, false otherwise
      */
-    @Override
     public boolean validateCoordinates( int row, int col ){
         return chessCells.length > 0 && chessCells[0].length > 0 &&
             row < chessCells.length && col < chessCells[0].length
@@ -47,7 +40,6 @@ public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
      * @param col the column to look at
      * @return BoardSquare the square found, or null if it does not exist
      */
-    @Override
     public BoardSquare getCell( int row, int col ){
         if ( validateCoordinates( row, col ) ){
             return chessCells[row][col];
@@ -60,7 +52,6 @@ public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
      * @param row the row to look at
      * @param col the column to look at
      */
-    @Override
     public void clearCell(int row, int col){
         if ( validateCoordinates( row, col ) ){
             chessCells[row][col].clearSquare();
@@ -78,7 +69,6 @@ public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
      *
      * @return ArrayList<GamePiece> the pieces
      */
-    @Override
     public ArrayList<ChessGamePiece> getAllWhitePieces(){
         ArrayList<ChessGamePiece> whitePieces = new ArrayList<ChessGamePiece>();
         for ( int i = 0; i < 8; i++ ){
@@ -98,7 +88,6 @@ public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
      *
      * @return ArrayList<GamePiece> the pieces
      */
-    @Override
     public ArrayList<ChessGamePiece> getAllBlackPieces(){
         ArrayList<ChessGamePiece> blackPieces = new ArrayList<ChessGamePiece>();
         for ( int i = 0; i < 8; i++ ){
@@ -130,7 +119,6 @@ public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
      * back to the board, if false it will simply reset everything and leave
      * the board blank.
      */
-    @Override
     public void resetBoard ( boolean addAfterReset ){
         chessCells = new BoardSquare[8][8];
         this.removeAll();
@@ -163,43 +151,50 @@ public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
      * (Re)initializes this ChessGameBoard to its default layout with all 32
      * pieces added.
      */
-    @Override
     public void initializeBoard(){
+        PieceClassicFactory pieceStandar = new PieceClassicFactory();
         resetBoard( false );
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
                 ChessGamePiece pieceToAdd;
-                Pawn p1 = new Pawn(this, i, j, ChessGamePiece.BLACK);
-                Pawn p2 = new Pawn(this, i, j, ChessGamePiece.WHITE);
+                //Pawn p1 = new Pawn(this, i, j, ChessGamePiece.BLACK);
+                //Pawn p2 = new Pawn(this, i, j, ChessGamePiece.WHITE);
                 if ( i == 1 ) // black pawns
                 {
+                    pieceToAdd = pieceStandar.CreateClassicPiece("PAWN", this, i, j, ChessGamePiece.BLACK);
                     //pieceToAdd = new Pawn( this, i, j, ChessGamePiece.BLACK );
-                    pieceToAdd = (Pawn) p1.clone(this);
+                    //pieceToAdd = (Pawn) p1.clone(this);
                 }
                 else if ( i == 6 ) // white pawns
                 {
                     //pieceToAdd = new Pawn( this, i, j, ChessGamePiece.WHITE );
-                     pieceToAdd = (Pawn) p2.clone(this);
+                    //pieceToAdd = (Pawn) p2.clone(this);
+                    pieceToAdd = pieceStandar.CreateClassicPiece("PAWN", this, i, j, ChessGamePiece.WHITE);
                 }
                 else if ( i == 0 || i == 7 ) // main rows
                 {
                     int colNum =
                         i == 0 ? ChessGamePiece.BLACK : ChessGamePiece.WHITE;
                     if ( j == 0 || j == 7 ){
-                        pieceToAdd = new Rook( this, i, j, colNum );
+                        //pieceToAdd = new Rook( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateClassicPiece("ROOK", this, i, j, colNum);
                     }
                     else if ( j == 1 || j == 6 ){
-                        pieceToAdd = new Knight( this, i, j, colNum );
+                        //pieceToAdd = new Knight( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateClassicPiece("KNIGHT", this, i, j, colNum);
                     }
                     else if ( j == 2 || j == 5 ){
-                        pieceToAdd = new Bishop( this, i, j, colNum );
+                        //pieceToAdd = new Bishop( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateClassicPiece("BISHOP", this, i, j, colNum);
                     }
                     else if ( j == 3 ){
-                        pieceToAdd = new King( this, i, j, colNum );
+                        //pieceToAdd = new King( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateClassicPiece("KING", this, i, j, colNum);
                     }
                     else
                     {
-                        pieceToAdd = new Queen( this, i, j, colNum );
+                        //pieceToAdd = new Queen( this, i, j, colNum );
+                        pieceToAdd = pieceStandar.CreateClassicPiece("QUEEN", this, i, j, colNum);
                     }
                 }
                 else
@@ -223,7 +218,6 @@ public class ChessGameBoard  extends JPanel implements ChessGameBoardAbstract {
     /**
      * Clears the colors on the board.
      */
-    @Override
     public void clearColorsOnBoard(){
         for ( int i = 0; i < chessCells.length; i++ ){
             for ( int j = 0; j < chessCells[0].length; j++ ){
