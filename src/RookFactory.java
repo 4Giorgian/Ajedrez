@@ -9,9 +9,9 @@
  * @author Saroff
  */
 public class RookFactory extends ChessPieceFactory {
-    
+       
     @Override
-    public ChessPiece createChessPiece() {
-        return new Rook();
+    public ChessPiece createChessPiece(ChessGameBoard board, int row, int column, int color) {
+        return new Rook(board, row, column, color);
     }
 }

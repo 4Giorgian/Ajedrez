@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Pawn 
     extends ChessGamePiece
-    implements CheesGamePieceGUI, CheesGamePieceMovement, IPawn {
+    implements CheesGamePieceGUI, CheesGamePieceMovement, IPawn, ChessPiece {
     
     private boolean notMoved;
     static final String PATH_IMAGE_WHITE = "chessImages/WhitePawn.gif";

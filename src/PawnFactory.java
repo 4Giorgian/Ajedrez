@@ -11,7 +11,7 @@
 public class PawnFactory extends ChessPieceFactory {
     
     @Override
-    public ChessPiece createChessPiece() {
-        new Pawn();
+    public ChessPiece createChessPiece(ChessGameBoard board, int row, int column, int color) {
+        return new Pawn(board, row, column, color);
     }
 }

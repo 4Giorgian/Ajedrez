@@ -10,5 +10,5 @@
  */
 public abstract class ChessPieceFactory {
     
-    public abstract ChessPiece createChessPiece();
+    public abstract ChessPiece createChessPiece(ChessGameBoard board, int row, int column, int color);
 }

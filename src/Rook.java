@@ -10,7 +10,8 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Rook
-    extends ChessGamePiece{
+    extends ChessGamePiece
+    implements ChessPiece {
     // private ArrayList<String> possibleMoves;
     // ----------------------------------------------------------
     /**
@@ -34,7 +35,7 @@ public class Rook
      * @return ArrayList<String> the list of moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
+     public ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
         ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
         ArrayList<String> westMoves = calculateWestMoves( board, 8 );
