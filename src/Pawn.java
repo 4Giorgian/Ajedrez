@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Pawn
-    extends ChessGamePiece{
+    extends ChessGamePiece {
     private boolean notMoved;
     // ----------------------------------------------------------
     /**
@@ -141,4 +141,9 @@ public class Pawn
             );           
         }
     }
+   /* @Override
+    public ImageIcon addImage() {
+        // TODO Auto-generated method stub
+        return null;
+    }*/
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Knight
-    extends ChessGamePiece{
+    extends ChessGamePiece {
     /**
      * Knight constructor for gamePiece
      *
@@ -114,4 +114,9 @@ public class Knight
             );            
         }
     }
+   /* @Override
+    public ImageIcon addImage() {
+        // TODO Auto-generated method stub
+        return null;
+    }*/
 }
