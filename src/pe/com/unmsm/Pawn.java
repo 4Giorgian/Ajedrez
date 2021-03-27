@@ -34,7 +34,7 @@ public class Pawn
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    private Pawn( ChessGameBoard board, int row, int col, int color ){
+    public Pawn( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, true );
         notMoved = true;
         possibleMoves = calculatePossibleMoves( board );
