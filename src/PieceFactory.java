@@ -1,8 +1,9 @@
 
-public class PieceStandarFactory {
-    public ChessGamePiece CreateStandarPiece(String pieceName, ChessGameBoard board, int row, int col, int color) {
+public class PieceFactory  implements AbstractElementsBoardFactory{
 
-        if (pieceName.equalsIgnoreCase("PAWN")) {
+	@Override
+	public ChessGamePiece CreateStandarPiece(String pieceName, ChessGameBoard board, int row, int col, int color) {
+		if (pieceName.equalsIgnoreCase("PAWN")) {
 			return new Pawn(board, row, col, color);
 		} else if (pieceName.equalsIgnoreCase("KING")) {
 			return new King(board, row, col, color);
@@ -17,5 +18,13 @@ public class PieceStandarFactory {
 		}
 
         return null;
-    }
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public BoardSquare createBoardSquare(int row, int col, ChessGamePiece piece) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
