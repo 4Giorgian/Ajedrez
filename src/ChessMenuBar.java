@@ -19,7 +19,7 @@ public class ChessMenuBar
     public ChessMenuBar(){
         String[] menuCategories = { "File", "Options", "Help" };
         String[] menuItemLists =
-        { "New game/restart,Exit", "Toggle graveyard,Toggle game log",
+        { "Reiniciar partida,Salir,1", "Alternar cementerio,Alternar registro",
           "About" };
         for ( int i = 0; i < menuCategories.length; i++ ){
             JMenu currMenu = new JMenu( menuCategories[i] );
@@ -55,13 +55,13 @@ public class ChessMenuBar
             if ( buttonName.equals( "About" ) ){
                 aboutHandler();
             }
-            else if ( buttonName.equals( "New game/restart" ) ){
+            else if ( buttonName.equals( "Reiniciar partida" ) ){
                 restartHandler();
             }
-            else if ( buttonName.equals( "Toggle game log" ) ){
+            else if ( buttonName.equals( "Alternar registro" ) ){
                 toggleGameLogHandler();
             }
-            else if ( buttonName.equals( "Exit" ) ){
+            else if ( buttonName.equals( "Salir" ) ){
                 exitHandler();
             }
             else

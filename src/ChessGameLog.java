@@ -33,7 +33,8 @@ public class ChessGameLog
      *            the line of text to add
      */
     public void addToLog( String s ){
-        if ( textArea.getText().length() > 0 ){
+       if ( textArea.getText().length() > 0 ){
+           //new SimpleDateFormat("dd-MM-yyyy").format(myDate)
             textArea.setText( textArea.getText() + "\n" + new Date() + " - "
                 + s );
         }

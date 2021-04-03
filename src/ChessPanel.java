@@ -37,8 +37,8 @@ public class ChessPanel
         gameBoard = new ChessGameBoard();
         //gameBoard = new ChessGameBoardNull();
         gameLog = new ChessGameLog();
-        playerOneGraveyard = new ChessGraveyard( "Player 1's graveyard" );
-        playerTwoGraveyard = new ChessGraveyard( "Player 2's graveyard" );
+        playerOneGraveyard = new ChessGraveyard( "Cementerio de Jugador 1" );
+        playerTwoGraveyard = new ChessGraveyard( "Cementerio de Jugador  2" );
         this.add( menuBar, BorderLayout.NORTH );
         this.add( gameBoard, BorderLayout.CENTER );
         this.add( gameLog, BorderLayout.SOUTH );

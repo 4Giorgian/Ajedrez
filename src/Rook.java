@@ -43,7 +43,7 @@ public class Rook
         allMoves.addAll( northMoves );
         allMoves.addAll( southMoves );
         allMoves.addAll( westMoves );
-        allMoves.addAll( eastMoves );
+        allMoves.addAll( eastMoves ); 
         return allMoves;
     }
     /**

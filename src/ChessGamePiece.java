@@ -55,11 +55,7 @@ public abstract class ChessGamePiece{
      * @param pieceColor
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public ChessGamePiece(
-        ChessGameBoard board,
-        int row,
-        int col,
-        int pieceColor ){
+    public ChessGamePiece(ChessGameBoard board,int row,int col,int pieceColor ){
         skipMoveGeneration = false;
         this.pieceColor = pieceColor;
         pieceImage = createImageByPieceType();
@@ -618,7 +614,7 @@ public abstract class ChessGamePiece{
                     }
                     else
                     {
-                        board.getCell( row, col ).setBackground( Color.PINK );
+                        board.getCell( row, col ).setBackground( Color.DARK_GRAY );
                     }
                 }
             }

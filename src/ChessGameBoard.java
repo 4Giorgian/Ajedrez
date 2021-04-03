@@ -207,7 +207,8 @@ public class ChessGameBoard  extends JPanel{
                 }
                 else
                 {
-                    chessCells[i][j].setBackground( Color.BLACK );
+                    //COLOR INICIAL
+                    chessCells[i][j].setBackground( Color.GRAY );
                 }
                 chessCells[i][j].addMouseListener( listener );
                 this.add( chessCells[i][j] );
@@ -225,8 +226,8 @@ public class ChessGameBoard  extends JPanel{
                     chessCells[i][j].setBackground( Color.WHITE );
                 }
                 else
-                {
-                    chessCells[i][j].setBackground( Color.BLACK );
+                {//COLOR BUCLE
+                    chessCells[i][j].setBackground( Color.GRAY);
                 }
             }
         }
@@ -236,7 +237,7 @@ public class ChessGameBoard  extends JPanel{
      *
      * @author Ben Katz (bakatz)
      * @author Danielle Bushrow (dbushrow)
-     * @author Myles David (davidmm2)
+     * @author Myles David (david}mm2)
      * @version 2010.11.16
      */ 
     private class BoardListener

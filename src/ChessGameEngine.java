@@ -31,13 +31,13 @@ public class ChessGameEngine{
         firstClick = true;
         currentPlayer = 1;
         this.board = board;
+        //(columna,fila)=(col,row)
         this.king1 = (King)board.getCell( 7, 3 ).getPieceOnSquare();
         this.king2 = (King)board.getCell( 0, 3 ).getPieceOnSquare();
-        ( (ChessPanel)board.getParent() ).getGameLog().clearLog();
+        //( (ChessPanel)board.getParent() ).getGameLog().clearLog();
         ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
-            "A new chess "
-                + "game has been started. Player 1 (white) will play "
-                + "against Player 2 (black). BEGIN!" );
+                 "¡Empezó la partida! El Jugador 1 (blanco)"
+                + " contra el Jugador 2(marrón). Clic para mover la ficha." );
     }
     // ----------------------------------------------------------
     /**
@@ -249,7 +249,7 @@ public class ChessGameEngine{
             currentPiece = squareClicked.getPieceOnSquare();
             if ( selectedPieceIsValid() ){
                 currentPiece.showLegalMoves( board );
-                squareClicked.setBackground( Color.GREEN );
+                squareClicked.setBackground( Color.BLACK );
                 firstClick = false;
             }
             else
