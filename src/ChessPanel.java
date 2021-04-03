@@ -25,7 +25,7 @@ public class ChessPanel
      * Create a new ChessPanel object.
      */
             
-    private ChessPanel(){
+    ChessPanel(){
                       
         this.setLayout( new BorderLayout() );
         menuBar = new ChessMenuBar();
