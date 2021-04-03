@@ -196,9 +196,9 @@ public class ChessGameBoard extends JPanel{
                 }
                 else
                 {
-                    //pieceToAdd = null;
-                    NullPiece nullPiece = new NullPiece(this, i, j, 0);
-                    pieceToAdd = nullPiece;
+                    pieceToAdd = null;
+                    //NullPiece nullPiece = new NullPiece(this, i, j, 0);
+                    //pieceToAdd = nullPiece;
                 }
                 chessCells[i][j] = new BoardSquare( i, j, pieceToAdd );
                 if ( ( i + j ) % 2 == 0 ){

@@ -12,7 +12,9 @@ import java.util.Date;
  * @version 2010.11.17
  */
 public class ChessGameLog
-    extends JScrollPane{
+    extends JScrollPane
+    implements ChessLog {
+    
     private JTextArea textArea;
     // ----------------------------------------------------------
     /**
@@ -32,6 +34,7 @@ public class ChessGameLog
      * @param s
      *            the line of text to add
      */
+    @Override
     public void addToLog( String s ){
         if ( textArea.getText().length() > 0 ){
             textArea.setText( textArea.getText() + "\n" + new Date() + " - "
@@ -45,6 +48,7 @@ public class ChessGameLog
     /**
      * Clears the log.
      */
+    @Override
     public void clearLog(){
         textArea.setText( "" );
     }
@@ -54,11 +58,20 @@ public class ChessGameLog
      * 
      * @return String the most recent log statement
      */
+    @Override
     public String getLastLog(){
         int indexOfLastNewLine = textArea.getText().lastIndexOf( "\n" );
         if ( indexOfLastNewLine < 0 ){
             return textArea.getText();
         }
         return textArea.getText().substring( indexOfLastNewLine + 1 );
+    }
+    
+    public void setTextArea(JTextArea textArea) {
+        this.textArea = textArea;
+    }
+    
+    public JTextArea getTextArea() {
+        return textArea;
     }
 }
