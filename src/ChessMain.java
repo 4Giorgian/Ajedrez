@@ -23,6 +23,7 @@ public class ChessMain{
         // frame.pack();
         // frame.setVisible( true );
 
-        new InitializerGameFacade();
+        InitializerGameFacade gameFacade = new InitializerGameFacade();
+        gameFacade.createGame();
     }
 }

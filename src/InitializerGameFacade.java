@@ -5,6 +5,9 @@ public class InitializerGameFacade {
 
     public InitializerGameFacade() {
         jFrame = new JFrame( "YetAnotherChessGame 1.0" );
+    }
+
+    public void createGame() {
         jFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         jFrame.getContentPane().add( new ChessPanel() );
         jFrame.pack();
