@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseEvent;
@@ -13,6 +14,7 @@ import java.awt.event.MouseEvent;
  * @version 2010.11.17
  */
 public class ChessGameEngine{
+    private List<IObservador> observadores = new ArrayList<IObservador>();
     private ChessGamePiece currentPiece;
     private boolean        firstClick;
     private int            currentPlayer;
@@ -63,6 +65,7 @@ public class ChessGameEngine{
      */
     private void nextTurn(){
         currentPlayer = ( currentPlayer == 1 ) ? 2 : 1;
+        this.notificarTodosObservadores();
         ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
                 "It is now Player " + currentPlayer + "'s turn." );
     }
@@ -309,4 +312,12 @@ public class ChessGameEngine{
             }
         }
     }
+
+    public void agregar(IObservador observador) {
+		observadores.add(observador);
+	}
+
+    public void notificarTodosObservadores() {
+		observadores.forEach(x -> x.actualizar(currentPlayer));
+	}
 }
