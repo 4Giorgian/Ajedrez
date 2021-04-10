@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Queen
-    extends ChessGamePiece{
+    extends ChessGamePiece {
     // ----------------------------------------------------------
     /**
      * Create a new Queen object.

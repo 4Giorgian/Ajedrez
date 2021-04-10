@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.*;
 // -------------------------------------------------------------------------
@@ -10,7 +11,7 @@ import javax.swing.*;
  * @version 2010.11.17
  */
 public class ChessGraveyard
-    extends JPanel{
+    extends JPanel implements IObservador{
     private String title;
     // ----------------------------------------------------------
     /**
@@ -20,6 +21,7 @@ public class ChessGraveyard
      *            the title of the graveyard
      */
     public ChessGraveyard( String title ){
+        this.setBackground(Color.ORANGE);
         this.title = title;
         this.add( new JLabel( title ) );
         this.setLayout( new GridLayout( 8, 0 ) );
@@ -44,5 +46,14 @@ public class ChessGraveyard
     public void clearGraveyard(){
         this.removeAll();
         this.add( new JLabel( title ) );
+    }
+    @Override
+    public void actualizar(int currentPlayer) {
+        // TODO Auto-generated method stub
+        if(currentPlayer == 1 ){
+            this.setBackground(Color.YELLOW);
+        } else if(currentPlayer == 2 ) {
+            this.setBackground(Color.BLACK);
+        }
     }
 }
