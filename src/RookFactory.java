@@ -8,10 +8,10 @@
  *
  * @author niquito
  */
-public class RookFactory extends ChessPieceFactory {
+public class RookFactory /*extends ChessPieceFactory */{
     
-    @Override
-    public ChessPiece createChessPiece() {
+    
+    /*public ChessPiece createChessPiece() {
         return new Rook();
-    }
+    }*/
 }

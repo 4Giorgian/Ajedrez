@@ -1,13 +1,17 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
-// -------------------------------------------------------------------------
 
-public class Rook extends ChessGamePiece implements IRook{
+public class Rook extends ChessGamePiece{
    
+     
+    private CreateImageRook createimagerook;
+     
+    private Invoker broker;
+    
     public Rook( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
     }
-   
+    
     @Override
     protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
         ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
@@ -22,58 +26,35 @@ public class Rook extends ChessGamePiece implements IRook{
         return allMoves;
     }
    
-     
-   
-    
-    //@Override
-    public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return createWhiteRook();            
-        }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return createBlackRook();           
-        }
-        else
-        {
-            return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif")
-            );        
-        }
-    }
-    
-    
-    public ImageIcon createWhiteRook() {
-        return new ImageIcon(
-                getClass().getResource("chessImages/WhiteRook.gif")
-            );
-    }
-    
-    public ImageIcon createBlackRook() {
-        return new ImageIcon(
-                getClass().getResource("chessImages/BlackRook.gif")
-            );
-    }
-    
     
     
     @Override
-    public IRook clonar() {
-       
-        Rook rookClonada = null;
-        try {
-            rookClonada = (Rook) clone(); 
-        }catch(CloneNotSupportedException e) {
-            e.printStackTrace();
+    public ImageIcon createImageByPieceType(){
+        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
+            createimagerook= new CreateImageRook();
+            CreateWhiteRook WhiteRook = new CreateWhiteRook(createimagerook);
+            broker = new Invoker(WhiteRook);
+            return broker.placeOrders();              
         }
-        return rookClonada;
+        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
+            createimagerook= new CreateImageRook();
+            CreateBlackRook BlackRook = new CreateBlackRook(createimagerook);
+            broker = new Invoker(BlackRook);
+            return broker.placeOrders();       
+        }
+        else
+        {
+            return new ImageIcon(getClass().getResource("chessImages/default-Unassigned.gif") );   
+        }
     }
     
-
-   
-
     
-
    
+    
+    
+    
+    
+    
     
     
 }
