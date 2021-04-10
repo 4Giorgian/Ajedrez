@@ -13,12 +13,21 @@ import java.awt.event.MouseEvent;
  * @version 2010.11.17
  */
 public class ChessGameEngine{
+    
+    
+    Caretaker caretaker = new Caretaker();
+    Originator originator = new Originator();
+    private int            i = 0;
     private ChessGamePiece currentPiece;
     private boolean        firstClick;
     private int            currentPlayer;
     private ChessGameBoard board;
     private King           king1;
     private King           king2;
+     String nombreJuego = "Automatic Save";
+    
+    
+    
     // ----------------------------------------------------------
     /**
      * Create a new ChessGameEngine object. Accepts a fully-created
@@ -28,6 +37,8 @@ public class ChessGameEngine{
      *            the reference ChessGameBoard
      */
     public ChessGameEngine( ChessGameBoard board ){
+        ChessGameLog juego = new ChessGameLog();
+        juego.setNombre(nombreJuego);
         firstClick = true;
         currentPlayer = 1;
         this.board = board;
@@ -37,13 +48,16 @@ public class ChessGameEngine{
         ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
             "A new chess "
                 + "game has been started. Player 1 (white) will play "
-                + "against Player 2 (black). BEGIN!" );
+                + "against Player 2 (black). BEGIN! \n" + (juego));
     }
+
+   
     // ----------------------------------------------------------
     /**
      * Resets the game to its original state.
      */
     public void reset(){
+        
         firstClick = true;
         currentPlayer = 1;
         ( (ChessPanel)board.getParent() ).getGraveyard( 1 ).clearGraveyard();
@@ -62,10 +76,48 @@ public class ChessGameEngine{
      * Switches the turn to be the next player's turn.
      */
     private void nextTurn(){
+     
+        ChessGameLog juego = new ChessGameLog();
+     
+         if (determineGameLost() == 0){
+             i++;
+         }
+         else  {
+             i = 0;
+         }
+            
+   
+    /*Juego juego = new Juego();
+    Caretaker caretaker = new Caretaker();
+    Originator originator = new Originator();*/
+    juego.setNombre(nombreJuego);
+    juego.setCheckpoint(i);
+    originator.setEstado(juego);    
+    
+    caretaker.addMemento(originator.guardar());
+        
+    juego = originator.getEstado();
+    
         currentPlayer = ( currentPlayer == 1 ) ? 2 : 1;
         ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
-                "It is now Player " + currentPlayer + "'s turn." );
+                (juego)+ 
+                " It is now Player " + currentPlayer + "'s turn." )
+                
+                ;
     }
+    
+  public  ChessGameLog restaurar (int a){
+      
+      ChessGameLog juego = new ChessGameLog();
+     originator.setEstado(juego);
+      originator.restaurar(caretaker.getMemento(a));
+      
+      juego = originator.getEstado();
+      
+      return juego;
+      
+  } 
+    
     // ----------------------------------------------------------
     /**
      * Gets the current player. Used for determining the turn.
@@ -212,7 +264,10 @@ public class ChessGameEngine{
      * @return int 1 or 2 for the losing play, -1 for stalemate, or 0 for a
      *         still valid game.
      */
-    public int determineGameLost(){
+    public  int determineGameLost(){
+        
+        
+        
         if ( king1.isChecked( board ) && !playerHasLegalMoves( 1 ) ) // player 1
         // loss
         {

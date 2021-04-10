@@ -14,15 +14,44 @@ import java.util.Date;
 public class ChessGameLog
     extends JScrollPane{
     private JTextArea textArea;
-    // ----------------------------------------------------------
-    /**
-     * Create a new ChessGameLog object.
-     */
-    public ChessGameLog(){
+  
+     private int checkpoint;
+    private String nombre;
+
+    
+    
+    public int getCheckpoint(){
+        return checkpoint;
+    }
+
+    public void setCheckpoint(int checkpoint) {
+        this.checkpoint = checkpoint;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+  
+    
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    
+    @Override
+	public String toString() {
+		return "["+ nombre + ", checkpoint = " + checkpoint + "]";
+	}
+        
+      
+        
+    public ChessGameLog() {
         super(
-            new JTextArea( "", 5, 30 ),
-            JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-            JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
+                new JTextArea( "", 5, 30 ),
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS );
         textArea = ( (JTextArea)this.getViewport().getView() );
     }
     // ----------------------------------------------------------
@@ -37,6 +66,8 @@ public class ChessGameLog
             textArea.setText( textArea.getText() + "\n" + new Date() + " - "
                 + s );
         }
+        
+        
         else
         {
             textArea.setText( new Date() + " - " + s );

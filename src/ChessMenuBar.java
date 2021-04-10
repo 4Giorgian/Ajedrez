@@ -19,7 +19,7 @@ public class ChessMenuBar
     public ChessMenuBar(){
         String[] menuCategories = { "File", "Options", "Help" };
         String[] menuItemLists =
-        { "New game/restart,Exit", "Toggle graveyard,Toggle game log",
+        { "New game/restart,QuickLoad,Exit", "Toggle graveyard,Toggle game log",
           "About" };
         for ( int i = 0; i < menuCategories.length; i++ ){
             JMenu currMenu = new JMenu( menuCategories[i] );
@@ -64,6 +64,12 @@ public class ChessMenuBar
             else if ( buttonName.equals( "Exit" ) ){
                 exitHandler();
             }
+            
+            else if ( buttonName.equals ( "QuickLoad")){
+                quickLoad();
+                
+            }
+                    
             else
             {
                 toggleGraveyardHandler();
@@ -74,6 +80,22 @@ public class ChessMenuBar
     /**
      * Takes an appropriate action if the about button is clicked.
      */
+    
+    private void  quickLoad(){
+    
+       
+    int a = Integer.parseInt(JOptionPane.showInputDialog("selecciona el checkout a cargar:"));  
+    
+    if (a == 0) {
+     ( (ChessPanel)this.getParent() ).getGameEngine().reset() ;
+    }   
+    else   { 
+       ((ChessPanel)this.getParent()).getGameEngine().restaurar(a);
+    }
+    }
+        
+    
+        
     private void aboutHandler(){
         JOptionPane.showMessageDialog(
             this.getParent(),
