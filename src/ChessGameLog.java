@@ -15,10 +15,10 @@ public class ChessGameLog
     extends JScrollPane{
     private JTextArea textArea;
   
+    
      private int checkpoint;
     private String nombre;
-
-    
+   
     
     public int getCheckpoint(){
         return checkpoint;
@@ -32,8 +32,7 @@ public class ChessGameLog
         return nombre;
     }
 
-  
-    
+     
     
     public void setNombre(String nombre) {
         this.nombre = nombre;
