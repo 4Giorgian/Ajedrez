@@ -1,3 +1,5 @@
+package chess;
+
 public class ElementsBoardProductor {
     public static AbstractElementsBoardFactory getTypeElementBoard(String typeElementBoard){
         if (typeElementBoard.equalsIgnoreCase("PIECE")) {

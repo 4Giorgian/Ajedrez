@@ -1,3 +1,5 @@
+package chess;
+
 import javax.swing.JFrame;
 
 public class InitializerGameFacade {
@@ -11,6 +13,7 @@ public class InitializerGameFacade {
         jFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         jFrame.getContentPane().add( new ChessPanel() );
         jFrame.pack();
+        jFrame.setLocationRelativeTo(null);
         jFrame.setVisible( true );
     }
 }

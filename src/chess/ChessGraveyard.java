@@ -1,3 +1,5 @@
+package chess;
+
 import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.*;

@@ -1,4 +1,6 @@
-import javax.swing.*;
+package chess;
+
+import login.LoginFrame;
 // -------------------------------------------------------------------------
 /**
  * Shows the GUI for the Chess game.
@@ -23,7 +25,10 @@ public class ChessMain{
         // frame.pack();
         // frame.setVisible( true );
 
-        InitializerGameFacade gameFacade = new InitializerGameFacade();
-        gameFacade.createGame();
+        // InitializerGameFacade gameFacade = new InitializerGameFacade();
+        // gameFacade.createGame();
+        
+        LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setVisible(true);
     }
 }

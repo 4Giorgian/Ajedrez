@@ -1,3 +1,5 @@
+package chess;
+
 
 public class PieceFactory  implements AbstractElementsBoardFactory{
 

@@ -1,3 +1,5 @@
+package chess;
+
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
@@ -75,18 +77,18 @@ public class King
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("chessImages/WhiteKing.gif")
+                getClass().getResource("/chessImages/WhiteKing.gif")
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("chessImages/BlackKing.gif" )
+                getClass().getResource("/chessImages/BlackKing.gif" )
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif" )
+                getClass().getResource("/chessImages/default-Unassigned.gif" )
             );            
         }
     }
