@@ -45,9 +45,7 @@ public class OracleConnection {
             
         } catch (Exception e) {
             System.out.println("An exception was found: " + e);
-
         }
-        
         User user = new User();
         while (rs.next()) {
             user.setId(rs.getInt(1));
@@ -70,7 +68,6 @@ public class OracleConnection {
             
         } catch (Exception e) {
             System.out.println("An exception was found: " + e);
-
         }
         
         History history = new History();

@@ -19,44 +19,26 @@ public class History {
     private Integer wins;
     private Integer loses;
 
-    /**
-     * @return the id
-     */
     public Integer getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
     public void setId(Integer id) {
         this.id = id;
     }
-    
-    /**
-     * @return the wins
-     */
+
     public Integer getWins() {
         return wins;
     }
 
-    /**
-     * @param wins the wins to set
-     */
     public void setWins(Integer wins) {
         this.wins = wins;
     }
 
-    /**
-     * @return the loses
-     */
     public Integer getLoses() {
         return loses;
     }
 
-    /**
-     * @param loses the loses to set
-     */
     public void setLoses(Integer loses) {
         this.loses = loses;
     }

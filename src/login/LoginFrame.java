@@ -187,10 +187,6 @@ public class LoginFrame extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
             }
-            
-            
-            
-            
         } catch (SQLException ex) {
             System.out.println("An exception was found: " + ex);
         }

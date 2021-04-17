@@ -19,88 +19,50 @@ public class ObjectDTO {
     private Integer wins;
     private Integer loses;
 
-    /**
-     * @return the id
-     */
     public Integer getId() {
         return id;
     }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the name
-     */
+    
     public String getName() {
         return name;
     }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return the password
-     */
+    
     public String getPassword() {
         return password;
     }
-
-    /**
-     * @param password the password to set
-     */
-    public void setPassword(String password) {
-        this.password = password;
+    
+    public String getLastGame() {
+        return lastGame;
     }
-
-
-    /**
-     * @return the wins
-     */
+    
     public Integer getWins() {
         return wins;
     }
-
-    /**
-     * @param wins the wins to set
-     */
-    public void setWins(Integer wins) {
-        this.wins = wins;
-    }
-
-    /**
-     * @return the loses
-     */
+    
     public Integer getLoses() {
         return loses;
     }
 
-    /**
-     * @param loses the loses to set
-     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setWins(Integer wins) {
+        this.wins = wins;
+    }
+
     public void setLoses(Integer loses) {
         this.loses = loses;
     }
-    
 
-    /**
-     * @return the lastGame
-     */
-    public String getLastGame() {
-        return lastGame;
-    }
-
-    /**
-     * @param lastGame the lastGame to set
-     */
     public void setLastGame(String lastGame) {
         this.lastGame = lastGame;
     }
