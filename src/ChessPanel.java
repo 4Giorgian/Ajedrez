@@ -1,5 +1,11 @@
 import java.awt.*;
 import javax.swing.*;
+
+import chess.ChessGameBoard;
+import chess.ChessGameEngine;
+import chess.ChessGameLog;
+import chess.ChessGraveyard;
+import chess.ChessMenuBar;
 // -------------------------------------------------------------------------
 /**
  * The main panel of the Chess game.

@@ -15,10 +15,10 @@ import javax.swing.ImageIcon;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public abstract class ChessGamePiece{
+public abstract class ChessGamePiece implements PieceResource {
     private boolean             skipMoveGeneration;
     private int                 pieceColor;
-    private ImageIcon           pieceImage;
+    protected ImageIcon           pieceImage;
     /**
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
@@ -35,11 +35,11 @@ public abstract class ChessGamePiece{
     /**
      * Represents a black piece as an int
      */
-    static final int            BLACK      = 0;
+    public static final int            BLACK      = 0;
     /**
      * Represents a white piece as an int
      */
-    static final int            WHITE      = 1;
+    public static final int            WHITE      = 1;
     /**
      * Represents a piece that has not been assigned a color
      */
@@ -64,7 +64,6 @@ public abstract class ChessGamePiece{
         int pieceColor ){
         skipMoveGeneration = false;
         this.pieceColor = pieceColor;
-        pieceImage = createImageByPieceType();
         pieceRow = row;
         pieceColumn = col;
         if ( board.getCell( row, col ) != null ){
@@ -72,6 +71,7 @@ public abstract class ChessGamePiece{
         }
         possibleMoves = calculatePossibleMoves( board );
     }
+
     // ----------------------------------------------------------
     /**
      * Create a new GamePiece object. This constructor is used for special
@@ -97,7 +97,6 @@ public abstract class ChessGamePiece{
         boolean skipMoveGeneration ){
         this.skipMoveGeneration = skipMoveGeneration;
         this.pieceColor = pieceColor;
-        pieceImage = this.createImageByPieceType();
         pieceRow = row;
         pieceColumn = col;
         if ( board.getCell( row, col ) != null ){
@@ -409,7 +408,7 @@ public abstract class ChessGamePiece{
      * @return ImageIcon the image that represents this game piece, different
      *         for each piece.
      */
-    public abstract ImageIcon createImageByPieceType();
+    //public abstract ImageIcon createImageByPieceType();
     /**
      * Return the ImageIcon as an Image.
      *

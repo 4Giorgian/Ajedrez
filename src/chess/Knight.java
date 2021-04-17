@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Knight
-    extends ChessGamePiece {
+    extends ChessGamePiece implements PieceResource {
     /**
      * Knight constructor for gamePiece
      *
@@ -25,8 +25,9 @@ public class Knight
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Knight( ChessGameBoard board, int row, int col, int color ){
+    public Knight( ChessGameBoard board, int row, int col, int color,ResourcesPieceVisitor resourcesPieceVisitor){
         super( board, row, col, color );
+        this.pieceImage = createImageByPieceType(resourcesPieceVisitor);
     }
     /**
      * Calculates the moves of the knight in the north direction relative to the
@@ -92,28 +93,9 @@ public class Knight
         }
         return moves;
     }
-    /**
-     * Creates an icon for this piece depending on the piece's color.
-     *
-     * @return ImageIcon the ImageIcon representation of this piece.
-     */
+
     @Override
-    public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("/chessImages/WhiteKnight.gif")
-            );            
-        }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("/chessImages/BlackKnight.gif")
-            );            
-        }
-        else
-        {
-            return new ImageIcon(
-                getClass().getResource("/chessImages/default-Unassigned.gif")
-            );            
-        }
+    public ImageIcon createImageByPieceType(ResourcesPieceVisitor resourcesPieceVisitor) {
+        return resourcesPieceVisitor.createImageByPieceType(this);
     }
 }
