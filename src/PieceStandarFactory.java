@@ -1,9 +1,8 @@
 
-public class PieceFactory  implements AbstractElementsBoardFactory{
+public class PieceStandarFactory {
+    public IStandarPiece CreateStandarPiece(String pieceName, ChessGameBoard board, int row, int col, int color) {
 
-	@Override
-	public ChessGamePiece CreateStandarPiece(String pieceName, ChessGameBoard board, int row, int col, int color) {
-		if (pieceName.equalsIgnoreCase("PAWN")) {
+        if (pieceName.equalsIgnoreCase("PAWN")) {
 			return new Pawn(board, row, col, color);
 		} else if (pieceName.equalsIgnoreCase("KING")) {
 			return new King(board, row, col, color);
@@ -18,13 +17,5 @@ public class PieceFactory  implements AbstractElementsBoardFactory{
 		}
 
         return null;
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public BoardSquare createBoardSquare(int row, int col, ChessGamePiece piece) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    }
 }

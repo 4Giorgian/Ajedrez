@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Pawn
-    extends ChessGamePiece implements PieceResource {
+    extends ChessGamePiece {
     private boolean notMoved;
     // ----------------------------------------------------------
     /**
@@ -27,9 +27,8 @@ public class Pawn
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Pawn( ChessGameBoard board, int row, int col, int color,ResourcesPieceVisitor resourcesPieceVisitor){
+    public Pawn( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color, true );
-        this.pieceImage = createImageByPieceType(resourcesPieceVisitor);
         notMoved = true;
         possibleMoves = calculatePossibleMoves( board );
     }
@@ -55,7 +54,7 @@ public class Pawn
                     board,
                     row,
                     col,
-                    getColorOfPiece(),new ResourcesPieceVisitorImpl()) );
+                    getColorOfPiece() ) );
             }
             return true;
         }
@@ -123,8 +122,23 @@ public class Pawn
      *
      * @return ImageIcon the ImageIcon representation of this piece.
      */
-
-    public ImageIcon createImageByPieceType(ResourcesPieceVisitor resourcesPieceVisitor) {
-        return resourcesPieceVisitor.createImageByPieceType(this);
+    @Override
+    public ImageIcon createImageByPieceType(){
+        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
+            return new ImageIcon(
+                getClass().getResource("chessImages/WhitePawn.gif")
+            );            
+        }
+        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
+            return new ImageIcon(
+                getClass().getResource("chessImages/BlackPawn.gif")
+            );            
+        }
+        else
+        {
+            return new ImageIcon(
+                getClass().getResource("chessImages/default-Unassigned.gif")
+            );           
+        }
     }
 }

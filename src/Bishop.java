@@ -22,9 +22,8 @@ public class Bishop extends ChessGamePiece {
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Bishop( ChessGameBoard board, int row, int col, int color,ResourcesPieceVisitor resourcesPieceVisitor){
+    public Bishop( ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
-        this.pieceImage = createImageByPieceType(resourcesPieceVisitor);
     }
     /**
      * Calculates the possible moves for this piece. These are ALL the possible
@@ -47,9 +46,27 @@ public class Bishop extends ChessGamePiece {
         allMoves.addAll( southWestMoves );
         return allMoves;
     }
-
+    /**
+     * Creates an icon for this piece depending on the piece's color.
+     * 
+     * @return ImageIcon the ImageIcon representation of this piece.
+     */
     @Override
-    public ImageIcon createImageByPieceType(ResourcesPieceVisitor resourcesPieceVisitor) {
-        return resourcesPieceVisitor.createImageByPieceType(this);
+    public ImageIcon createImageByPieceType(){
+        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
+            return new ImageIcon(
+                getClass().getResource("chessImages/WhiteBishop.gif")
+            );            
+        }
+        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
+            return new ImageIcon(
+                getClass().getResource("chessImages/BlackBishop.gif")
+            );
+        }
+        else{
+            return new ImageIcon(
+                getClass().getResource("chessImages/BlackBishop.gif")
+            );
+        }
     }
 }
