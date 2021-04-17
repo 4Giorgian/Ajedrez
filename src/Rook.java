@@ -25,8 +25,9 @@ public class Rook
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Rook( ChessGameBoard board, int row, int col, int color ){
+    public Rook( ChessGameBoard board, int row, int col, int color, ResourcesPieceVisitor resourcesPieceVisitor){
         super( board, row, col, color );
+        this.pieceImage = createImageByPieceType(resourcesPieceVisitor);
     }
     /**
      * Calculates the possible moves for this Rook.
@@ -46,28 +47,9 @@ public class Rook
         allMoves.addAll( eastMoves );
         return allMoves;
     }
-    /**
-     * Creates an icon for this piece depending on the piece's color.
-     *
-     * @return ImageIcon the ImageIcon representation of this piece.
-     */
+
     @Override
-    public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/WhiteRook.gif")
-            );            
-        }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
-            return new ImageIcon(
-                getClass().getResource("chessImages/BlackRook.gif")
-            );            
-        }
-        else
-        {
-            return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif")
-            );        
-        }
+    public ImageIcon createImageByPieceType(ResourcesPieceVisitor resourcesPieceVisitor) {
+        return resourcesPieceVisitor.createImageByPieceType(this);
     }
 }
