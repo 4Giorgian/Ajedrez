@@ -18,6 +18,10 @@ public class FacadeChess {
         jFrame = new JFrame( "YetAnotherChessGame 1.0 -- ".concat(type) );
     }
 
+    FacadeChess() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public void createGame() {
       
         jFrame = new JFrame( "YetAnotherChessGame 1.0" );
