@@ -32,8 +32,6 @@ public class UserLoggedIn implements LoginStrategy {
     }
     
     public void game() {
-//        InitializerGameFacade gameFacade = new InitializerGameFacade("Registered Game");
-//        gameFacade.createGame();
         target.showLoggedInSession();
     }
 }
