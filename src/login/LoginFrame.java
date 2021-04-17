@@ -5,8 +5,13 @@
  */
 package login;
 
+import dbconnection.OracleConnection;
+import dto.ObjectDTO;
 import interceptingFilter.FilterManager;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import model.History;
+import model.User;
 
 /**
  *
@@ -149,17 +154,45 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String user = userTextField.getText();
+        String userName = userTextField.getText();
         String password = new String(passwordField.getPassword());
-        if (user.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Se deben ingresar las credenciales");
-        } else if(user.equals("usuario") && password.equals("123")) {
-            JOptionPane.showMessageDialog(null, "Welcome " + user);
-            filterManager.enableUserLoggedIn();
-
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+        
+        OracleConnection oracleConnection = new OracleConnection();
+        try {
+            User user = oracleConnection.getUserByName(userName);
+            if (user.getId() != null) {
+                History history = oracleConnection.getHistoryByUserId(user.getId());
+                ObjectDTO dto = new ObjectDTO();
+                dto.setId(user.getId());
+                dto.setName(user.getName());
+                dto.setPassword(user.getPassword());
+                dto.setLastGame(history.getLastGame());
+                dto.setWins(history.getWins());
+                dto.setLoses(history.getLoses());
+                System.out.println(dto.toString());
+                
+                if(userName.equals(dto.getName()) && password.equals(dto.getPassword())) {
+                    String info = "Welcome " + user.getName()+" ! \n"+
+                                    "Last game: "+dto.getLastGame()+"\n"+
+                                    "Wins: "+dto.getWins()+"\n"+
+                                    "Loses: "+dto.getLoses();
+                    JOptionPane.showMessageDialog(null, info);
+                    filterManager.enableUserLoggedIn();
+                    this.dispose();
+                } else if(dto.getName() == null && dto.getPassword() == null) {
+                    JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+                }
+            } else if ((userName.isEmpty() || password.isEmpty())) {
+                JOptionPane.showMessageDialog(null, "Se deben ingresar las credenciales");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+            }
+            
+            
+            
+            
+        } catch (SQLException ex) {
+            System.out.println("An exception was found: " + ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
