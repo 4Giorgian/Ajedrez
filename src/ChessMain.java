@@ -25,6 +25,5 @@ public class ChessMain{
 
         InitializerGameFacade gameFacade = new InitializerGameFacade();
         gameFacade.createGame();
-        
     }
 }
