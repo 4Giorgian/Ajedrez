@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+//KFC
 // -------------------------------------------------------------------------
 /**
  * Class to represent the Bishop piece.
