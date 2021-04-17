@@ -72,6 +72,8 @@ public class ChessGameEngine{
      * Switches the turn to be the next player's turn.
      */
     private void nextTurn(){
+        System.out.println("ANTES ANTES .....");
+        caretaker.viewArray();
         currentPlayer = ( currentPlayer == 1 ) ? 2 : 1;
         this.notificarTodosObservadores();
         ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
@@ -79,7 +81,7 @@ public class ChessGameEngine{
         ChessGameLog log = new ChessGameLog();
         log = ( (ChessPanel)board.getParent() ).getGameLog();
         originator.setEstado(log);
-        caretaker.addMemento(originator.guardar());
+        caretaker.addMemento(new Memento(log));
         originator.restaurar(caretaker.getMemento(0));
         ( (ChessPanel)board.getParent() ).setGameLog(originator.getEstado());
     }

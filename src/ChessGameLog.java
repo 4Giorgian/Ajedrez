@@ -79,8 +79,8 @@ public class ChessGameLog
         return copy;
     }
 
-    @Override
-    public String toString() {
-        return "LOG Textarea:" + textArea.getText();
-    }
+    // @Override
+    // public String toString() {
+    //     return "LOG Textarea:" + textArea.getText();
+    // }
 }

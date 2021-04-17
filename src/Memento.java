@@ -6,6 +6,6 @@ public class Memento {
         }
     
         public ChessGameLog getEstado() {
-            return estado;
+            return this.estado;
         }
 }

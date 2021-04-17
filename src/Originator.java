@@ -6,15 +6,16 @@ public class Originator {
 	}
 
 	public ChessGameLog getEstado() {
-		return estado;
+		return this.estado;
 	}
 
 	public Memento guardar() {
-		return new Memento(estado);
+		// System.out.println("ESTADO: "+ estado);
+		return new Memento(this.estado);
 	}
 
 	public void restaurar(Memento m) {
-         System.out.println("MEMENTO 0 ?: "+ m );
+        //  System.out.println("MEMENTO 0 ?: "+ m.getEstado() );
 		this.estado = m.getEstado();
 	}
 }
