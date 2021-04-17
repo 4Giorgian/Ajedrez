@@ -168,6 +168,8 @@ public class LoginFrame extends javax.swing.JFrame {
         String user = userTextField.getText();
         String password = new String(passwordField.getPassword());
         if (user.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se guardaran los avances");
+            this.dispose();
             filterManager.enableUserNotLoggedIn();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
