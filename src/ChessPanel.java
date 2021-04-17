@@ -10,7 +10,7 @@ import javax.swing.*;
  * @version 2010.11.17
  */
 public class ChessPanel
-    extends JPanel{
+    extends JPanel implements Cloneable{
     private ChessMenuBar    menuBar;
     private ChessGameBoard  gameBoard;
     private ChessGameLog    gameLog;
@@ -21,7 +21,7 @@ public class ChessPanel
     /**
      * Create a new ChessPanel object.
      */
-    public ChessPanel(){
+    public ChessPanel(Caretaker caretaker, Originator originator){
         this.setLayout( new BorderLayout() );
         menuBar = new ChessMenuBar();
         gameBoard = new ChessGameBoard();
@@ -34,7 +34,7 @@ public class ChessPanel
         this.add( playerOneGraveyard, BorderLayout.WEST );
         this.add( playerTwoGraveyard, BorderLayout.EAST );
         this.setPreferredSize( new Dimension( 800, 600 ) );
-        gameEngine = new ChessGameEngine( gameBoard ); // start the game
+        gameEngine = new ChessGameEngine( gameBoard, caretaker, originator, this ); // start the game
         gameEngine.agregar(playerOneGraveyard);
         gameEngine.agregar(playerTwoGraveyard);
     }
@@ -46,6 +46,10 @@ public class ChessPanel
      */
     public ChessGameLog getGameLog(){
         return gameLog;
+    }
+
+    public void setGameLog( ChessGameLog gameLog) {
+        this.gameLog = gameLog;
     }
     // ----------------------------------------------------------
     /**
@@ -84,5 +88,20 @@ public class ChessPanel
         {
             return null;
         }
+    }
+
+    public ChessPanel cloneChessPanel(){
+        ChessPanel copy = null;
+        try {
+            copy = (ChessPanel) clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        
+        return copy;
+    }
+
+    public ChessPanel hymself() {
+        return this;
     }
 }

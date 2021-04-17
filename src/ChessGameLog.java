@@ -12,7 +12,7 @@ import java.util.Date;
  * @version 2010.11.17
  */
 public class ChessGameLog
-    extends JScrollPane{
+    extends JScrollPane implements Cloneable{
     private JTextArea textArea;
     // ----------------------------------------------------------
     /**
@@ -34,6 +34,7 @@ public class ChessGameLog
      */
     public void addToLog( String s ){
         if ( textArea.getText().length() > 0 ){
+            // System.out.println(textArea.getText());
             textArea.setText( textArea.getText() + "\n" + new Date() + " - "
                 + s );
         }
@@ -60,5 +61,26 @@ public class ChessGameLog
             return textArea.getText();
         }
         return textArea.getText().substring( indexOfLastNewLine + 1 );
+    }
+
+    public void log() {
+        System.out.println("LO DE ABAJO ES MEMENTO");
+        System.out.println(textArea.getText() + "HASTA AQUÍ");
+    }
+
+    public ChessGameLog cloneChessLog(){
+        ChessGameLog copy = null;
+        try {
+            copy = (ChessGameLog) clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        
+        return copy;
+    }
+
+    @Override
+    public String toString() {
+        return "LOG Textarea:" + textArea.getText();
     }
 }

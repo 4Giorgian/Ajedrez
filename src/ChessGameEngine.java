@@ -21,6 +21,11 @@ public class ChessGameEngine{
     private ChessGameBoard board;
     private King           king1;
     private King           king2;
+    public ChessPanel       cloneChesspanel;
+    public ChessPanel       chessPanel;
+    public ChessGameLog     chessGameLog;
+    public Caretaker        caretaker;
+    public Originator       originator;
     // ----------------------------------------------------------
     /**
      * Create a new ChessGameEngine object. Accepts a fully-created
@@ -29,9 +34,12 @@ public class ChessGameEngine{
      * @param board
      *            the reference ChessGameBoard
      */
-    public ChessGameEngine( ChessGameBoard board ){
+    public ChessGameEngine( ChessGameBoard board, Caretaker caretaker, Originator originator, ChessPanel chessPanel ){
         firstClick = true;
         currentPlayer = 1;
+        this.caretaker = caretaker;
+        this.originator = originator;
+        this.chessPanel = chessPanel;
         this.board = board;
         this.king1 = (King)board.getCell( 7, 3 ).getPieceOnSquare();
         this.king2 = (King)board.getCell( 0, 3 ).getPieceOnSquare();
@@ -68,6 +76,12 @@ public class ChessGameEngine{
         this.notificarTodosObservadores();
         ( (ChessPanel)board.getParent() ).getGameLog().addToLog(
                 "It is now Player " + currentPlayer + "'s turn." );
+        ChessGameLog log = new ChessGameLog();
+        log = ( (ChessPanel)board.getParent() ).getGameLog();
+        originator.setEstado(log);
+        caretaker.addMemento(originator.guardar());
+        originator.restaurar(caretaker.getMemento(0));
+        ( (ChessPanel)board.getParent() ).setGameLog(originator.getEstado());
     }
     // ----------------------------------------------------------
     /**
