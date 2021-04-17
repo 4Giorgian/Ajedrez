@@ -5,8 +5,8 @@ import javax.swing.JFrame;
 public class InitializerGameFacade {
     private JFrame jFrame;
 
-    public InitializerGameFacade() {
-        jFrame = new JFrame( "YetAnotherChessGame 1.0" );
+    public InitializerGameFacade(String type) {
+        jFrame = new JFrame( "YetAnotherChessGame 1.0 -- ".concat(type) );
     }
 
     public void createGame() {

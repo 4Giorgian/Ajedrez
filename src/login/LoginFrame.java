@@ -5,8 +5,7 @@
  */
 package login;
 
-import chess.InitializerGameFacade;
-import javax.swing.JLabel;
+import interceptingFilter.FilterManager;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class LoginFrame extends javax.swing.JFrame {
 
+    FilterManager filterManager = new FilterManager();
     /**
      * Creates new form LoginFrame
      */
@@ -66,6 +66,11 @@ public class LoginFrame extends javax.swing.JFrame {
         });
 
         jButton2.setText("Quick Game");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Exit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -147,22 +152,25 @@ public class LoginFrame extends javax.swing.JFrame {
         String user = userTextField.getText();
         String password = new String(passwordField.getPassword());
         if (user.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Hay un campo vacío.");
-        } else if(user.equals("q") && password.equals("q")) {
-            //JOptionPane.showMessageDialog(null, "Welcome " + user);
-            JLabel jlabel = new JLabel("Welcome back to the game ".concat(user));
-            JOptionPane.showMessageDialog(null,jlabel);
-//            ViewFrame viewFrame = new ViewFrame();
-//            viewFrame.setVisible(true);
-            InitializerGameFacade gameFacade = new InitializerGameFacade();
-            gameFacade.createGame();
+            JOptionPane.showMessageDialog(null, "Se deben ingresar las credenciales");
+        } else if(user.equals("usuario") && password.equals("123")) {
+            JOptionPane.showMessageDialog(null, "Welcome " + user);
+            filterManager.enableUserLoggedIn();
 
             this.dispose();
         } else {
-            //JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
-            JOptionPane.showMessageDialog(null, new JLabel("Usuario o contraseña incorrecta", JLabel.CENTER));
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String user = userTextField.getText();
+        String password = new String(passwordField.getPassword());
+        if (user.isEmpty() || password.isEmpty()) {
+            filterManager.enableUserNotLoggedIn();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
